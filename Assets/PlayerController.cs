@@ -8,6 +8,13 @@ public class PlayerController : MonoBehaviour
     private float timeBetweenMoves = .2f;
     private float timer = 0;
 
+    private Vector3 startPosition;
+
+    private void Start()
+    {
+        startPosition = transform.position;
+    }
+
     // Update is called once per frame
     void Update()
     {
@@ -42,7 +49,17 @@ public class PlayerController : MonoBehaviour
     {
         if (collision.gameObject.tag == "obstacle")
         {
-            Debug.Log("Game Over");
+            transform.position = startPosition;
+        }
+
+
+
+        if (collision.gameObject.tag == "Finish")
+        {
+            transform.position = startPosition;
+            {
+                Debug.Log("Game Over");
+            }
         }
     }
 }
